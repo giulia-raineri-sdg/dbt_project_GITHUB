@@ -1,12 +1,11 @@
 {{
   config(
     materialized='incremental',
-    unique_key=['nome', 'cognome'],  -- Chiave di Business
+    unique_key=['nome', 'cognome'],
     incremental_strategy='merge'
   )
 }}
 
--- SCD Tipo 1: Il nuovo dato SOVRASCRIVE il vecchio
 SELECT
     nome,
     cognome,

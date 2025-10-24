@@ -13,3 +13,12 @@ git push # Invia le modifiche al repository remoto
 
 # Creato il modello e la sorgente per atlete
 dbt run --models dim_atlete --full-refresh
+dbt run --models dim_atlete_scd3 --full-refresh
+
+# Creato il modello e la sorgente per progetti SCD1
+dbt run --models dim_progetti_scd1 --full-refresh
+dbt run --models dim_progetti_scd1
+
+# Creato il modello e la sorgente per progetti SCD3
+dbt run --models dim_progetti_scd3 --full-refresh
+dbt run --models dim_progetti_scd3

@@ -26,7 +26,7 @@ WITH source_data AS (
 
 -- 2. TARGET CTE (CONDITIONAL): Ottiene i dati esistenti in DIM_ATLETE_SCD3
 {% if is_incremental() %}
-, -- <--- VIRGOLA ESSENZIALE
+, 
 target_data AS (
     SELECT
         nome,
