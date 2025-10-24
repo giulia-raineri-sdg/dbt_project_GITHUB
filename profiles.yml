@@ -1,0 +1,13 @@
+dbt_project:
+  outputs:
+    dev:
+      account: DAB21389
+      database: DBT_PROJECT_DB
+      password: R7GAouOO8PvlpBtHy9yD
+      role: DBT_ROLE
+      schema: DBT_PROJECT_SCHEMA
+      threads: 6
+      type: snowflake
+      user: GIULIARAINERI
+      warehouse: DBT_PROJECT_WH
+  target: dev
