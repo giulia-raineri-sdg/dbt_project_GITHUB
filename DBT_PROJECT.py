@@ -1,14 +1,12 @@
-# Inizializzazione di un progetto dbt
-#dbt init
-
-# Per cambiare directorty prima di eseguire un comando dbt
-cd dbt_project 
-
-# Verifica che che la configurazione di dbt sia corretta
-dbt debug
-
-# Esegui tutte le trasformazioni definite nel progetto dbt
+# Attiva environment virtuale
+.\Scripts\Activate.ps1
+cd dbt_project_github
+# Esegui dbt
 dbt run
+dbt debug
+dbt seed #caricare file csv creati in precedenza
 
-
-
+# Esegui comandi Git
+git add . # Aggiungi tutte le modifiche
+git commit -m #"Aggiornamento dbt models e dati" # Crea un commit con un messaggio
+git push # Invia le modifiche al repository remoto

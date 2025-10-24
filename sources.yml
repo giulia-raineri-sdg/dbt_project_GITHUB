@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw_data # Nome del gruppo di sorgenti
+    schema: DBT_PROJECT_SCHEMA # Sostituisci con il tuo schema Snowflake (es. ANALYTICS)
+    description: Dati grezzi caricati tramite dbt seed per la simulazione HR.
+    
+    tables:
+      # Sorgenti per la simulazione SCD 1 & 3
+      - name: dipendenti_T0
+        description: Stato iniziale (T0) dei dati dipendenti.
+      - name: dipendenti_T1
+        description: Stato modificato (T1) dei dati dipendenti per SCD.
