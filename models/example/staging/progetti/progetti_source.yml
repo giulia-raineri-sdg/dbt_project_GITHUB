@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: progetti_source
+    database: DBT_PROJECT_DB
+    schema: DBT_PROJECT_SCHEMA 
+
+    tables:
+      - name: progetti_t0
+      - name: progetti_t1
