@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: atlete_source
+    # Uso i valori estratti da profiles.yml (sotto il target 'dev')
+    database: DBT_PROJECT_DB     
+    schema: DBT_PROJECT_SCHEMA 
+
+    tables:
+      - name: atlete_t0
+      - name: atlete_t1
