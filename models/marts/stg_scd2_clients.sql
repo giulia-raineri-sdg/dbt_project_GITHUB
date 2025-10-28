@@ -89,4 +89,8 @@ final AS (
 
 SELECT
     *
+<<<<<<< HEAD
 FROM final
+=======
+FROM final
+>>>>>>> 87149f039f227de008431110a0deea99342af2d3
