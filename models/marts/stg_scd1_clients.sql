@@ -5,7 +5,6 @@
         on_schema_change='fail'
     )
 }}
-
 with all_sources as (
 
     -- Unione T0
