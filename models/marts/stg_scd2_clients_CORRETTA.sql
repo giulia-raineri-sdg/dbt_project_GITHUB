@@ -73,7 +73,7 @@ rows_to_insert as (
         current_timestamp() as dbt_updated_at,
         last_update as valid_from,
         cast('2999-12-31' as date) as valid_to,
-        
+
         true as is_current
     from 
     {% if is_incremental() %}
