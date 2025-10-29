@@ -13,5 +13,8 @@ git push
 # Caricamento dei dati di esempio
 dbt seed 
 
-
-dbt run --select scd1_clients --full-refresh
+# descrizione
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg_scd1_clients"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg_scd2_clients"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg_scd1_products"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg_scd2_products"]}'
