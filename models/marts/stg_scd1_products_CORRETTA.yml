@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_scd1_products_corretta
+    description: "Modello incrementale che carica i prodotti con gestione SCD Type 1. Utilizza strategia di caricamento 'delete+insert' per aggiornare i record esistenti sovrascrivendoli con i nuovi dati."
+    columns:
+      - name: product_id
+        data_type: varchar
+        description: "Chiave surrogata generata da product_cd tramite hash."
+        tests:
+          - unique
+          - not_null
+
+      - name: product_cd
+        data_type: varchar
+        description: "Codice univoco del prodotto (chiave naturale)."
+        tests:
+          - not_null
+
+      - name: model_name
+        data_type: varchar
+        description: "Nome del modello del prodotto."
+
+      - name: brand
+        data_type: varchar
+        description: "Brand del prodotto."
+
+      - name: category
+        data_type: varchar
+        description: "Categoria del prodotto."
+
+      - name: list_price
+        data_type: float
+        description: "Prezzo di listino del prodotto."
+
+      - name: color
+        data_type: varchar
+        description: "Colore del prodotto."
+
+      - name: is_deleted
+        data_type: number
+        description: "Flag di cancellazione logica: 0 = Record attivo; 1 = Record rimosso dalla sorgente."
+
+      - name: dbt_updated_at
+        data_type: timestamp_ltz
+        description: "Timestamp di quando il record è stato aggiornato l'ultima volta nel modello dbt."

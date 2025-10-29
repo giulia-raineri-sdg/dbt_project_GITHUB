@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_scd2_clients_corretta
+    description: "Modello incremantale che carica i clienti con gestione SCD Type 2. Utilizza campi di validità temporale per tracciare le modifiche storiche ai record dei clienti."
+    columns:
+      - name: customer_sk
+        data_type: varchar
+        description: "Chiave surrogata generata da customer_cd tramite hash.
+        tests:
+          - unique
+          - not_null"
+
+      - name: customer_cd
+        data_type: varchar
+        description: "Codice univoco del cliente (chiave naturale)."
+        tests:
+          - not_null
+
+      - name: name
+        data_type: varchar
+        description: "Nome del cliente."
+
+      - name: email
+        data_type: varchar
+        description: "Email del cliente."
+
+      - name: city
+        data_type: varchar
+        description: "Città del cliente."
+
+      - name: member_since
+        data_type: date
+        description: "Data di inizio della membership del cliente."
+
+      - name: last_update
+        data_type: date
+        description: "Timestamp dell'ultimo aggiornamento del record del cliente."
+        tests:
+          - not_null
+
+      - name: is_deleted
+        data_type: number
+        description: "Flag che indica se il cliente è stato cancellato (1) o attivo (0)."
+        
+      - name: dbt_updated_at
+        data_type: timestamp_ltz
+        description: "Timestamp dell'ultimo aggiornamento gestito da dbt."
+        tests:
+          - not_null
+
+      - name: valid_from
+        data_type: date
+        description: "Data inizio validità del record."
+        tests:
+          - not_null
+
+      - name: valid_to
+        data_type: date
+        description: "Data fine validità del record."
+        tests:
+          - not_null
+
+      - name: is_current
+        data_type: boolean
+        description: "Flag che indica se il record è l'ultima versione corrente del cliente."
+        tests:
+          - not_null

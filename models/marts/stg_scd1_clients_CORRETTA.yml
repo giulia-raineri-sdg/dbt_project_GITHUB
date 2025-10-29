@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: clients
+    description: >
+      "Modello incrementale che costruisce la tabella clienti a partire dalle
+      sorgenti `correct_clients_t0` e `correct_clients_t1`.  
+      Gestisce aggiornamenti e cancellazioni in base al campo `last_update`."
+
+    columns:
+      - name: customer_id
+        description: "Chiave surrogata generata a partire da `customer_cd`."
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_cd
+        description: "Codice univoco del cliente proveniente dalla sorgente."
+        tests:
+          - not_null
+
+      - name: name
+        description: "Nome completo del cliente'."
+
+      - name: email
+        description: "Indirizzo email del cliente."
+        tests:
+          - unique
+
+      - name: city
+        description: "Città di residenza del cliente."
+
+      - name: member_since
+        description: "Data di iscrizione o inizio della membership del cliente."
+
+      - name: last_update
+        description: "Timestamp de ultimo aggiornamento record nella sorgente."
+        tests:
+          - not_null
+
+      - name: is_deleted
+        description: "Flag che indica se il cliente è stato eliminato nella sorgente."
+
+      - name: dbt_updated_at
+        description: "Timestamp di aggiornamento del record da parte di dbt."
+        tests:
+          - not_null
