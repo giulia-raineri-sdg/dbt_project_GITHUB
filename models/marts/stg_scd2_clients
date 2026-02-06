@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: stg_scd2_clients
+    description: "Dimensione Cliente (SCD Type 2 Manuale). Contiene lo storico completo di tutte le modifiche ai record cliente, inclusa la gestione delle date di validità e del flag di cancellazione."
+    
+    columns:
+      - name: client_history_surrogate_key
+        data_type: varchar
+        description: "Chiave surrogata univoca per questa versione storica del record cliente (Primary Key della dimensione SCD2)."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_cd
+        data_type: varchar
+        description: "Codice univoco del cliente (chiave naturale). Usato per il tracciamento della cronologia."
+
+      - name: name
+        data_type: varchar
+        description: "Nome del cliente."
+
+      - name: email
+        data_type: varchar
+        description: "Indirizzo email del cliente."
+
+      - name: city
+        data_type: varchar
+        description: "Città di residenza del cliente."
+
+      - name: member_since
+        data_type: date
+        description: "Data in cui il cliente si è iscritto."
+
+      - name: valid_from_date
+        data_type: date
+        description: "Data di inizio validità del record (inizio della versione)."
+
+      - name: valid_to_date
+        data_type: date
+        description: "Data di fine validità del record. NULL se il record è ancora la versione corrente."
+        
+      - name: is_current_flag
+        data_type: boolean
+        description: "Flag di stato SCD2: TRUE se il record è la versione attualmente valida (valid_to_date IS NULL), FALSE altrimenti."
+
+      - name: is_deleted_flag
+        data_type: number
+        description: "Flag di cancellazione logica: 0 = Record attivo; 1 = Record rimosso dalla sorgente (anche se is_current è FALSE)."

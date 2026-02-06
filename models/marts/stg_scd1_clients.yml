@@ -1,0 +1,38 @@
+models:
+  - name: stg_scd1_clients
+    description: "Tabella di staging SCD Type 1 per i clienti. Gestisce l'aggiornamento (sovrascrittura) dei record e la cancellazione logica."
+    columns:
+      - name: client_surrogate_key
+        description: "Chiave surrogata univoca generata da CUSTOMER_CD."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_cd
+        description: "Codice univoco del cliente (chiave naturale). Usato per il merge incrementale."
+        tests:
+          - not_null
+
+      - name: name
+        data_type: varchar
+        description: "Nome completo del cliente."
+
+      - name: email
+        data_type: varchar
+        description: "Email del cliente."
+
+      - name: city
+        data_type: varchar
+        description: "Città del cliente"
+
+      - name: member_since
+        data_type: date
+        description: "Data in cui il cliente si è iscritto"
+
+      - name: last_update
+        data_type: date
+        description: "Data dell'ultima modifica al record"
+
+      - name: is_deleted_flag
+        data_type: number
+        description: "Flag di cancellazione logica, 1 se il record è cancellato, 0 altrimenti."

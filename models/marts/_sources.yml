@@ -1,0 +1,78 @@
+version: 2
+
+sources:
+  - name: clients_raw
+    schema: dbt_project_SCHEMA # Il tuo schema
+    description: "Dati raw dei clienti negli snapshot t0 e t1"
+    
+    tables:
+      # Tabella 1: Snapshot T0 (Stato Iniziale)
+      - name: correct_clients_t0
+        description: "Dati cliente allo snapshot iniziale (T0)."
+        columns:
+          - name: CUSTOMER_CD
+            description: "Codice univoco del cliente."
+            tests:
+              - not_null
+          - name: NAME
+          - name: EMAIL
+          - name: CITY
+          - name: MEMBER_SINCE
+          - name: LAST_UPDATE
+            description: "Data dell'ultima modifica al record."
+          - name: IS_DELETED
+            description: "Flag di cancellazione (NULL/1)."
+
+      # Tabella 2: Snapshot T1 (Stato Aggiornato)
+      - name: correct_clients_t1
+        description: "Dati cliente allo snapshot aggiornato (T1)."
+        columns:
+          - name: CUSTOMER_CD
+            description: "Codice univoco del cliente."
+            tests:
+              - not_null
+          - name: NAME
+          - name: EMAIL
+          - name: CITY
+          - name: MEMBER_SINCE
+          - name: LAST_UPDATE
+            description: "Data dell'ultima modifica al record."
+          - name: IS_DELETED
+            description: "Flag di cancellazione (NULL/1)."
+
+  - name: products_raw
+    schema: dbt_project_SCHEMA 
+    description: "Dati raw dei prodotti negli snapshot t0 e t1"
+
+    tables:
+      # Tabella Prodotti T0
+      - name: correct_products_t0
+        description: "Dati prodotto allo snapshot iniziale (T0)."
+        columns:
+          - name: PRODUCT_CD
+            description: "Codice univoco del prodotto."
+            tests:
+              - not_null
+          - name: MODEL_NAME
+          - name: BRAND
+          - name: CATEGORY
+          - name: LIST_PRICE
+            tests:
+              - not_null
+          - name: COLOR
+          
+      # Tabella Prodotti T1
+      - name: correct_products_t1
+        description: "Dati prodotto allo snapshot aggiornato (T1)."
+        columns:
+          - name: PRODUCT_CD
+            description: "Codice univoco del prodotto."
+            tests:
+              - not_null
+          - name: MODEL_NAME
+          - name: BRAND
+          - name: CATEGORY
+          - name: LIST_PRICE
+            tests:
+              - not_null
+          - name: COLOR
